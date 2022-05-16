@@ -20,8 +20,18 @@ const addNotes = function (title, body){
     } else {
             console.log('note title taken')
     }
-   
 }
+
+const removeNotes = function(title){
+    const notes = loadNotes()
+  const duplicateTitle = notes.filter(function(note){
+      return note.title !== title;
+  })
+      saveNotes(duplicateTitle)
+      console.log(`Note ${title} removed`)
+  }
+
+
 
 const saveNotes = function (notes){
 const dataJSON = JSON.stringify(notes)
@@ -42,5 +52,6 @@ const loadNotes = function (){
 
 module.exports = {
     getNotes: getNotes, 
-    addNotes: addNotes
+    addNotes: addNotes,
+    removeNotes: removeNotes,
 };
